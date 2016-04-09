@@ -13,31 +13,39 @@
     tools:context="com.jonnyg.gardenapp.Hub"
     tools:showIn="@layout/activity_hub">
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/btn"
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnSeedSave"
         android:layout_marginTop="50dp"
         android:text="Seed Save"
-        />
+        android:layout_marginRight="20dp"
+        android:minHeight="150dp"
+        android:minWidth="150dp"
+        android:background="@color/colorSwatch5"
+        android:src="@drawable/seed_savebtn_txt"
+        android:scaleType="fitXY" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:id="@+id/btnCamera"
         android:layout_marginTop="50dp"
         android:text="Camera"
-        android:layout_toRightOf="@+id/btn"
-        />
+        android:background="@color/colorSwatch5"
+        android:layout_toRightOf="@+id/btnSeedSave"
+        android:src="@drawable/photo_camerabtn_txt"
+        android:scaleType="fitXY" />
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/btn3"
-        android:layout_below="@+id/btn"
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnSeedShare"
+        android:layout_below="@+id/btnSeedSave"
         android:layout_marginTop="10dp"
-        android:text="Diary"
-
-        />
+        android:text="Seed Share"
+        android:background="@color/colorSwatch5"
+        android:src="@drawable/seed_sharebtn_txt"
+        android:scaleType="fitXY" />
 
 </RelativeLayout>

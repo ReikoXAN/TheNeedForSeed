@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffa500</color>
+    <color name="colorPrimary">#B99977</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="BackgroundColor">#006699</color>
+    <color name="BackgroundColor">#72C286</color>
+    <color name="backColorNew">#006699</color>
+    <color name="topBarBackColorNew">#ffa500</color>
+
+    <color name="colorSwatch1">#F2CDAE</color>
+    <color name="colorSwatch2">#5DD95F</color>
+    <color name="colorSwatch3">#FAAD6E</color>
+    <color name="colorSwatch4">#F29766</color>
+    <color name="colorSwatch5">#FFD6BF</color>
+    <color name="colorSwatch6">#39A635</color>
+    <color name="colorSwatch7">#00C957</color>
+    <color name="colorSwatch8">#72C286</color>
+    <color name="colorSwatch9">#DB974F</color>
+    <color name="colorSwatch10">#92F77E</color>
+    <color name="colorSwatch11">#B99977</color>
 </resources>

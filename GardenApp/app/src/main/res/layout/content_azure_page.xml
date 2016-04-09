@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/BackgroundColor"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.jonnyg.gardenapp.AzurePage"
+    tools:showIn="@layout/activity_azure_page">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Seed Name"
+        android:id="@+id/textViewSaveNameToAzure"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSaveNameToAzure"
+        android:layout_alignTop="@+id/textViewSaveNameToAzure"
+        android:layout_toRightOf="@+id/textViewSaveNameToAzure"
+        android:layout_toEndOf="@+id/textViewSaveNameToAzure"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/btnSaveDataToAzure"
+        android:layout_below="@+id/textViewSeedAmountToAzure"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View"
+        android:id="@+id/btnViewDataFromAzure"
+        android:layout_toRightOf="@id/btnSaveDataToAzure"
+        android:layout_alignTop="@id/btnSaveDataToAzure"
+    />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:id="@+id/listViewAzure"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnSaveDataToAzure" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Seed Type"
+        android:layout_marginTop="25dp"
+        android:id="@+id/textViewSeedTypeToAzure"
+        android:layout_below="@+id/editTextSaveNameToAzure"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Seed Amount"
+        android:layout_marginTop="25dp"
+        android:id="@+id/textViewSeedAmountToAzure"
+        android:layout_below="@+id/editTextSaveTypeToAzure"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSaveTypeToAzure"
+        android:layout_alignTop="@+id/textViewSeedTypeToAzure"
+        android:layout_alignLeft="@+id/editTextSaveNameToAzure"
+        android:layout_alignStart="@+id/editTextSaveNameToAzure" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextSaveAmountToAzure"
+        android:layout_alignTop="@+id/textViewSeedAmountToAzure"
+        android:layout_alignLeft="@+id/editTextSaveTypeToAzure"
+        android:layout_alignStart="@+id/editTextSaveTypeToAzure" />
+
+
+</RelativeLayout>

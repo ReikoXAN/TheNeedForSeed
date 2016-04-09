@@ -22,6 +22,10 @@ public class Seed_Table {
         this._amount = amount;
     }
 
+    public Seed_Table(String name){
+        this._seedName = name;
+    }
+
 
 
     public void set_id(int _id) {

@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jonnyg.gardenapp">
 
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,6 +21,7 @@
 
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -52,12 +56,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:name=".CameraView"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_camera_view"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.CameraView" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SeedShare"
+            android:label="@string/title_activity_seed_share"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.jonnyg.gardenapp.SeedShare" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AzurePage"
+            android:label="@string/title_activity_azure_page"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.jonnyg.gardenapp.AzurePage" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

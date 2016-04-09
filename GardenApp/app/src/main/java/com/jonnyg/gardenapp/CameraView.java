@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -20,6 +21,9 @@ public class CameraView extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView myImageView;
+    Button button_savephoto;
+    DataBaseHelper myDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ public class CameraView extends AppCompatActivity {
 
 
         ///end of onCreate
+        OnClickSavePhoto();
+        myDb = new DataBaseHelper(this);
     }
 
     private Boolean hasCamera() {
@@ -59,10 +65,37 @@ public class CameraView extends AppCompatActivity {
         startActivityForResult(myIntent, REQUEST_IMAGE_CAPTURE);
     }
 
-    //if you want to return the image taken
+    public void OnClickSavePhoto(){
+        button_savephoto = (Button)findViewById(R.id.btnSaveImage);
+        button_savephoto.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bitmap myBit = ((BitmapDrawable)myImageView.getDrawable()).getBitmap();
+                        ByteArrayOutputStream myBos = new ByteArrayOutputStream();
+                        myBit.compress(Bitmap.CompressFormat.PNG, 100, myBos);
+                        byte[] img = myBos.toByteArray();
+                        //gets byteArray and converts to Bitmap
+                        /*Bitmap bmp = BitmapFactory.decodeByteArray(img, 0, img.length);
+                        ImageView image = (ImageView)findViewById(R.id.imageview1) ;
+                        image.setImageBitmap(bmp);*/
+                        boolean isInserted =  myDb.insertData(img);
+                        if(isInserted==true){
+                           Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+                        }
+                        else{
+                            Toast.makeText(getApplicationContext(),"Data Inserted",Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                }
+        );
+    }
+
+                //if you want to return the image taken
 
 
-    @Override
+        @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             //did take an image

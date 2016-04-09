@@ -6,6 +6,9 @@
     <string name="title_activity_hub">Hub</string>
     <string name="title_activity_seed_save">SeedSave</string>
     <string name="title_activity_camera_view">CameraView</string>
+    <string name="title_activity_seed_share">SeedShare</string>
+    <string name="title_activity_azure_page">AzurePage</string>
 
 
 </resources>
+

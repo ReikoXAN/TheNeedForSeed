@@ -12,12 +12,17 @@ import android.widget.Toast;
  */
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static  final String DataBASE_NAME = "SeedSave.db";
-    //private static  final String DataBASE_NAME = "Test3.db";
+
     private static  final String TABLE_NAME = "seed_table";
     //public static  final String COL_1 = "ID";
     private static  final String COL_2 = "SNAME";
     private static  final String COL_3 = "STYPE";
     private static  final String COL_4 = "SAMOUNT";
+
+    //private static  final String DataBASE_NAME = "Test3.db";
+    private static final String TABLE_IMAGE = "images";
+    private static final String COULUMN_IMGID = "_id";
+    private static final String COULUMN_IMAGE = "image";
 
     private static  final String TEST_TABLE = "test_table";
     private static  final String COL_T1 = "ID";
@@ -35,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static Context myContext;
 
     /*private static final String Create_Test_Table = "create table "
-            + TEST_TABLE  + "(" + COL_T1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_T2
+            + TEST_TABLE + "(" + COL_T1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_T2
             + " INTEGER," + COL_T3 + " TEXT" +");";*/
 
     /*private static final String Create_Test_Table2 = "create table "
@@ -61,6 +66,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         db.execSQL("create table  " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, SNAME TEXT, STYPE TEXT,SAMOUNT INTEGER)");
         db.execSQL("create table  " + TEST_TABLE2 + " (ttid INTEGER PRIMARY KEY AUTOINCREMENT, ttname TEXT)");
+        db.execSQL("create table  " + TABLE_IMAGE + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB)");
 
         //Create_Test_Table = ("create table " + TEST_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, SEEDID TEXT, SEEDTYPE TEXT)");
         /*String query = "CREATE TABLE " + TEST_TABLE2 + "(" +
@@ -127,8 +133,44 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }*/
 
     public Cursor getAllData(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME,null);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select ID AS _id,SNAME,STYPE,SAMOUNT from " + TABLE_NAME,null);
+        /*if(res!=null){
+            res.moveToFirst();
+        }*/
         return  res;
+    }
+
+    public  Cursor getName(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor myC = db.rawQuery("select SNAME from " + TABLE_NAME,null);
+
+        return  myC;
+    }
+
+//    public Cursor getName(SQLiteDatabase db){
+//        Cursor cursor;
+//        String[] myStringArray = {}
+//         return cursor;
+//    }
+
+    public Cursor listInfo(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] myStringArray = {COL_2,COL_3,COL_4};
+        Cursor cursor = db.query(TABLE_NAME,myStringArray,null,null,null,null,null);
+        return  cursor;
+    }
+
+    public boolean insertData(byte[] image){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COULUMN_IMAGE, image);
+        long result = db.insert(TABLE_IMAGE,null,cv);
+        if(result == -1){
+            return  false;
+        }
+        else{
+            return true;
+        }
     }
 }

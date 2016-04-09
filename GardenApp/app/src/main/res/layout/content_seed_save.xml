@@ -9,6 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@color/BackgroundColor"
     tools:context="com.jonnyg.gardenapp.SeedSave"
     tools:showIn="@layout/activity_seed_save">
 
@@ -103,6 +104,15 @@
         android:layout_marginTop="20dp"
         android:id="@+id/textViewFBname"
         android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/listViewTest"
+        android:layout_below="@+id/btnAdd"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

@@ -60,12 +60,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                // myTextDetails.setText("Login");
+
            }
         }
 
         @Override
         public void onCancel() {
             //myTextDetails.setText("not logged in");
+
         }
 
         @Override
@@ -106,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
              public void onClick(View v) {
                  button_login.registerCallback(myCallBkManager, myCallback);
                  button_login.setReadPermissions("public_profile");
-
              }
          }
         );
