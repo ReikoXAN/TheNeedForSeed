@@ -22,7 +22,7 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/app_name"
+            android:label="Need For Seed"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,7 +47,7 @@
         </activity>
         <activity
             android:name=".SeedSave"
-            android:label="@string/title_activity_seed_save"
+            android:label="Saving Seeds"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.SeedSave" />
@@ -58,7 +58,7 @@
         <activity
             android:name=".CameraView"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_camera_view"
+            android:label="Picture Menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.CameraView" />
@@ -68,7 +68,7 @@
         </activity>
         <activity
             android:name=".SeedShare"
-            android:label="@string/title_activity_seed_share"
+            android:label="Sharing Menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.SeedShare" />
@@ -78,7 +78,7 @@
         </activity>
         <activity
             android:name=".AzurePage"
-            android:label="@string/title_activity_azure_page"
+            android:label="Save for Sharing"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.AzurePage" />
@@ -88,7 +88,7 @@
         </activity>
         <activity
             android:name=".seeds_for_sharing"
-            android:label="@string/title_activity_seeds_for_sharing"
+            android:label="Seeds for Sharing"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="com.jonnyg.gardenapp.seeds_for_sharing" />

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,22 +14,58 @@
     tools:context="com.jonnyg.gardenapp.seeds_for_sharing"
     tools:showIn="@layout/activity_seeds_for_sharing">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parent_layoutTop">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:id="@+id/listViewVSharing"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:id="@+id/ImgVlogo_share"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/logo_design"
+            android:background="@color/colorSwatch1"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:layout_marginTop="20dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View"
-        android:id="@+id/btnAzureShare"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/listViewVSharing"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/listViewVSharing"
+            android:layout_below="@+id/ImgVlogo_share"
+            android:layout_marginTop="20dp"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/listViewVSharing"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View"
+                android:id="@+id/btnAzureShare"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Collapse"
+                android:id="@+id/btnAzureShareColl"
+                android:layout_alignTop="@+id/btnAzureShare"
+                android:layout_toRightOf="@+id/btnAzureShare"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

@@ -7,7 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,6 +25,7 @@ public class seeds_for_sharing extends AppCompatActivity {
     Azuretbl myAzuretbl = new Azuretbl();
 
     Button button_view_from_azure;
+    Button button_collaspe;
     ListView list_view_see_sharing;
     private static final String TAG = "JonnysMessage";
 
@@ -48,6 +51,8 @@ public class seeds_for_sharing extends AppCompatActivity {
 
         }
         viewFromAzure();
+        collapseView();
+        OnTouchDice();
     }
 
 
@@ -67,14 +72,14 @@ public class seeds_for_sharing extends AppCompatActivity {
 
                         list_view_see_sharing.setAdapter(custAdapter);
 
-                        new AsyncTask<Void, Void, MobileServiceList<Azuretbl>>(){
+                        new AsyncTask<Void, Void, MobileServiceList<Azuretbl>>() {
                             MobileServiceTable<Azuretbl> myTestAzuretbl = mClient.getTable(Azuretbl.class);
 
                             @Override
                             protected MobileServiceList<Azuretbl> doInBackground(Void... params) {
                                 MobileServiceList<Azuretbl> result;
                                 try {
-                                    result = myTestAzuretbl.select("SEEDNAME","SEEDTYPE","SEED_AMOUNT").execute().get();
+                                    result = myTestAzuretbl.select("SEEDNAME", "SEEDTYPE", "SEED_AMOUNT").execute().get();
 
                                     /*where().field("SEEDNAME").eq("tomato").*/
                                     final MobileServiceList<Azuretbl> finalResult = result;
@@ -100,7 +105,39 @@ public class seeds_for_sharing extends AppCompatActivity {
                             }
                         }.execute();
 
+                        ViewGroup.LayoutParams params = list_view_see_sharing.getLayoutParams();
+                        params.height = 900;
+                        list_view_see_sharing.setLayoutParams(params);
+                        list_view_see_sharing.requestLayout();
 
+                    }
+                }
+        );
+    }
+
+    public void OnTouchDice(){
+        list_view_see_sharing = (ListView) findViewById(R.id.listViewVSharing);
+        list_view_see_sharing.setOnTouchListener(
+                new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        return false;
+                    }
+                }
+        );
+    }
+
+    public void collapseView(){
+        button_collaspe = (Button)findViewById(R.id.btnAzureShareColl);
+        button_collaspe.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ViewGroup.LayoutParams params = list_view_see_sharing.getLayoutParams();
+                        params.height = 0;
+                        list_view_see_sharing.setLayoutParams(params);
+                        list_view_see_sharing.requestLayout();
                     }
                 }
         );
