@@ -44,8 +44,21 @@
         android:layout_below="@+id/btnSeedSave"
         android:layout_marginTop="10dp"
         android:text="Seed Share"
+        android:layout_marginRight="20dp"
         android:background="@color/colorSwatch5"
         android:src="@drawable/seed_sharebtn_txt"
         android:scaleType="fitXY" />
+
+    <ImageButton
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/btnCommunity"
+        android:layout_below="@+id/btnSeedSave"
+        android:layout_marginTop="10dp"
+        android:text="Seed Share"
+        android:background="@color/colorSwatch5"
+        android:layout_toRightOf="@id/btnSeedShare"
+        android:scaleType="fitXY"
+        android:src="@drawable/community_btn_txtpn" />
 
 </RelativeLayout>

@@ -22,6 +22,7 @@ import com.microsoft.windowsazure.mobileservices.table.MobileServiceTable;
 import com.microsoft.windowsazure.mobileservices.table.TableOperationCallback;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class AzurePage extends AppCompatActivity{
 
@@ -33,7 +34,8 @@ public class AzurePage extends AppCompatActivity{
     EditText edittext_seed_name_for_azure;
     EditText edittext_seed_type_for_azure;
     EditText edittext_seed_amount_for_azure;
-    ListView azure_list_view;
+
+    //ListView azure_list_view;
     private static final String TAG = "JonnysMessage";
 
 
@@ -60,7 +62,7 @@ public class AzurePage extends AppCompatActivity{
 
         }
         saveToAzure();
-        viewFromAzure();
+        //viewFromAzure();
 
         edittext_seed_name_for_azure = (EditText)findViewById(R.id.editTextSaveNameToAzure);
         edittext_seed_type_for_azure = (EditText) findViewById(R.id.editTextSaveTypeToAzure);
@@ -68,8 +70,40 @@ public class AzurePage extends AppCompatActivity{
 
 
 
+        //newThread();
+
+
 
     }
+
+   /* public void newThread(){
+        final ArrayAdapter<Azuretbl> myAdapter = new ArrayAdapter<Azuretbl>
+                (getApplicationContext(), android.R.layout.simple_list_item_activated_1);
+
+        azure_list_view = (ListView) findViewById(R.id.listViewAzure);
+
+        azure_list_view.setAdapter(myAdapter);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    MobileServiceList<Azuretbl> myResult = mClient.getTable(Azuretbl.class)
+                            .where().field("SEEDNAME").eq("Tomato").execute().get();
+                    for(Azuretbl item: myResult){
+                        myAdapter.add(item);
+                        Log.e("Result are SEEDNAME :" ,"==== " + item.SEEDNAME);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        Thread mythread = new Thread(runnable);
+        mythread.start();
+    }*/
 
     public void saveToAzure(){
         button_save_to_azure = (Button)findViewById(R.id.btnSaveDataToAzure);
@@ -87,12 +121,12 @@ public class AzurePage extends AppCompatActivity{
                             public void onCompleted(Azuretbl entity, Exception exception, ServiceFilterResponse response) {
                                 if (exception == null) {
                                     // Insert succeeded
-                                    Toast myToast = Toast.makeText(getApplicationContext(),"Inserted", Toast.LENGTH_LONG);
+                                    Toast myToast = Toast.makeText(getApplicationContext(), "Inserted", Toast.LENGTH_LONG);
                                     myToast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                                     myToast.show();
 
-                                    MobileServiceTable<Azuretbl> myToDOMobService = mClient.getTable(Azuretbl.class);
-                                    myToDOMobService.select("SEEDNAME");
+                                   /* MobileServiceTable<Azuretbl> myToDOMobService = mClient.getTable(Azuretbl.class);
+                                    myToDOMobService.select("SEEDNAME");*/
 
                                     edittext_seed_name_for_azure.setText("");
                                     edittext_seed_type_for_azure.setText("");
@@ -136,63 +170,7 @@ myBuff = new StringBuffer();
     }
 
 
-    public void viewFromAzure(){
-        button_view_from_azure = (Button)findViewById(R.id.btnViewDataFromAzure);
-        button_view_from_azure.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
 
-                        final ArrayAdapter<Azuretbl> myAdapter = new ArrayAdapter<Azuretbl>
-                                (getApplicationContext(), android.R.layout.simple_list_item_activated_1);
-                       /* ArrayList<Azuretbl> arrayOfSeeds = new ArrayList<Azuretbl>();
-                       final AzureTestAdapter custAdapter = new AzureTestAdapter(getApplicationContext(), arrayOfSeeds);*/
-
-                        azure_list_view = (ListView) findViewById(R.id.listViewAzure);
-
-                        azure_list_view.setAdapter(myAdapter);
-
-                        new AsyncTask<Void, Void, MobileServiceList<Azuretbl>>(){
-                            MobileServiceTable<Azuretbl> myTestAzuretbl = mClient.getTable(Azuretbl.class);
-
-                            @Override
-                            protected MobileServiceList<Azuretbl> doInBackground(Void... params) {
-                                MobileServiceList<Azuretbl> result;
-                                try {
-                                    result = myTestAzuretbl.execute().get();
-
-                                    /*where().field("SEEDNAME").eq("tomato").*/
-                                    final MobileServiceList<Azuretbl> finalResult = result;
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-
-                                        myAdapter.clear();
-
-                                            for (Azuretbl item : finalResult) {
-
-
-                                                Azuretbl newSeed = new Azuretbl(item.SEEDNAME);
-                                                myAdapter.add(newSeed);
-                                                Log.i(TAG, "Read object with ID " + item.id + " " + item.SEEDNAME);
-
-                                                System.out.println("Item is " + finalResult);
-                                            }
-                                        }
-                                    });
-
-                                } catch (Exception exception) {
-
-                                }
-                                return null;
-                            }
-                        }.execute();
-
-
-                    }
-                }
-        );
-    }
 
 
 

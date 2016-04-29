@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by reiko_000 on 28/01/2016.
@@ -64,7 +68,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("create table  " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, SNAME TEXT, STYPE TEXT,SAMOUNT INTEGER)");
+        db.execSQL("create table  " + TABLE_NAME + " " +
+                "(ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " SNAME TEXT, STYPE TEXT,SAMOUNT INTEGER)");
+
         db.execSQL("create table  " + TEST_TABLE2 + " (ttid INTEGER PRIMARY KEY AUTOINCREMENT, ttname TEXT)");
         db.execSQL("create table  " + TABLE_IMAGE + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB)");
 
@@ -147,6 +154,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return  myC;
     }
+
+    public Cursor getImage(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor C = db.rawQuery("select * from " + TABLE_IMAGE,null);
+
+        return C;
+    }
+    /*C.moveToFirst();
+        byte[] Image;
+        Image = C.getBlob(C.getColumnIndex("image"));
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        decodedByte = BitmapFactory.decodeByteArray(Image,0,Image.length,options);
+        ArrayList<Integer> images = new ArrayList<Integer>();
+        while(!C.isAfterLast()){
+            images.add(C.getInt(C.getColumnIndex("image")));
+        }
+        C.close();
+        return  images.toArray(new Integer[images.size()]);*/
 
 //    public Cursor getName(SQLiteDatabase db){
 //        Cursor cursor;

@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">GardenApp</string>
     <string name="action_settings">Settings</string>
-    <string name="JonnysAppNameLbl">Jonny\'s Garden App</string>
+    <string name="JonnysAppNameLbl">Welcome to Need For Seed</string>
     <string name="app_id">1666949516922778</string>
     <string name="title_activity_hub">Hub</string>
     <string name="title_activity_seed_save">SeedSave</string>
     <string name="title_activity_camera_view">CameraView</string>
     <string name="title_activity_seed_share">SeedShare</string>
     <string name="title_activity_azure_page">AzurePage</string>
+    <string name="title_activity_seeds_for_sharing">seeds_for_sharing</string>
+    <string name="title_activity_gallery">Gallery</string>
 
 
 </resources>

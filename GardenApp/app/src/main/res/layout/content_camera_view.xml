@@ -14,15 +14,7 @@
     tools:showIn="@layout/activity_camera_view">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Take Photo"
-        android:id="@+id/btnTakePhoto"
-        android:layout_marginBottom="95dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="takePhoto" />
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -33,16 +25,47 @@
         android:minWidth="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_launcher" />/>
+        android:src="@drawable/plant_for_gallery" />/>
 
-    <Button
+
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save image"
-        android:id="@+id/btnSaveImage"
-        android:layout_marginRight="20dp"
-        android:layout_alignTop="@+id/btnTakePhoto"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/relLaybuttonCamera"
+        android:layout_below="@+id/imgViewCamera"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Take Photo"
+            android:id="@+id/btnTakePhoto"
+            android:layout_toRightOf="@+id/btnSaveImage"
+            android:onClick="takePhoto"
+            android:ems="5"
+            android:layout_marginRight="10dp"/>
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save image"
+            android:ems="5"
+            android:id="@+id/btnSaveImage"
+            android:layout_marginRight="10dp"
+             />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Image Gallery"
+            android:ems="5"
+            android:id="@+id/btnViewGallery"
+            android:layout_toRightOf="@id/btnTakePhoto" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

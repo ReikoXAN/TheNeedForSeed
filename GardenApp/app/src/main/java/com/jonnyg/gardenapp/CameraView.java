@@ -22,6 +22,7 @@ public class CameraView extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView myImageView;
     Button button_savephoto;
+    Button button_image_gallery;
     DataBaseHelper myDb;
 
     @Override
@@ -40,7 +41,7 @@ public class CameraView extends AppCompatActivity {
             }
         });
 
-        Button myButtom = (Button) findViewById(R.id.btnCamera);
+        Button myButtom = (Button) findViewById(R.id.btnTakePhoto);
         myImageView = (ImageView) findViewById(R.id.imgViewCamera);
 
         //disable button if no camera
@@ -50,6 +51,7 @@ public class CameraView extends AppCompatActivity {
 
 
         ///end of onCreate
+        toImageGallery();
         OnClickSavePhoto();
         myDb = new DataBaseHelper(this);
     }
@@ -71,7 +73,7 @@ public class CameraView extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Bitmap myBit = ((BitmapDrawable)myImageView.getDrawable()).getBitmap();
+                        Bitmap myBit = ((BitmapDrawable) myImageView.getDrawable()).getBitmap();
                         ByteArrayOutputStream myBos = new ByteArrayOutputStream();
                         myBit.compress(Bitmap.CompressFormat.PNG, 100, myBos);
                         byte[] img = myBos.toByteArray();
@@ -79,14 +81,26 @@ public class CameraView extends AppCompatActivity {
                         /*Bitmap bmp = BitmapFactory.decodeByteArray(img, 0, img.length);
                         ImageView image = (ImageView)findViewById(R.id.imageview1) ;
                         image.setImageBitmap(bmp);*/
-                        boolean isInserted =  myDb.insertData(img);
-                        if(isInserted==true){
-                           Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),"Data Inserted",Toast.LENGTH_LONG).show();
+                        boolean isInserted = myDb.insertData(img);
+                        if (isInserted == true) {
+                            Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Data Inserted", Toast.LENGTH_LONG).show();
                         }
 
+                    }
+                }
+        );
+    }
+
+    public void toImageGallery(){
+        button_image_gallery = (Button)findViewById(R.id.btnViewGallery);
+        button_image_gallery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent galleryInetent = new Intent("com.jonnyg.gardenapp.Gallery");
+                        startActivity(galleryInetent);
                     }
                 }
         );
